@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="robot">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../Apps/eclipse"/>
+    <property name="resource_loc:/robot/src/main/resources/commands.txt" value="src/main/resources/commands.txt"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="robot.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="src/test/lib/mockito-all-1.9.5.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="main/"/>
+                <exclude name="test/"/>
+                <exclude name="main/resources/"/>
+                <exclude name="test/lib/"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/main">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="resources/"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/test">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="lib/"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="src/main"/>
+            <src path="src/test"/>
+            <src path="src/main/resources"/>
+            <exclude name="main/"/>
+            <exclude name="test/"/>
+            <exclude name="main/resources/"/>
+            <exclude name="test/lib/"/>
+            <exclude name="resources/"/>
+            <exclude name="lib/"/>
+            <classpath refid="robot.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="GridTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.GridTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="HeadingTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.HeadingTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="LeftCommandTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.command.LeftCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="MoveCommandTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.command.MoveCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="PlaceCommandTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.command.PlaceCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="PositionTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.PositionTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="RightCommandTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.command.RightCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="robot">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.GridPositionTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.GridTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.HeadingTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.PositionTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.RobotSimulatorTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.RobotTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.CommandFactoryTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.CommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.LeftCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.MoveCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.PlaceCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.ReportCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.RightCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="RobotSimulator (1)">
+        <java classname="au.com.tla.robot.RobotSimulator" failonerror="true" fork="yes">
+            <arg line="-f ${resource_loc:/robot/src/main/resources/commands.txt}"/>
+            <classpath refid="robot.classpath"/>
+        </java>
+    </target>
+    <target name="RobotSimulatorTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.RobotSimulatorTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="RobotTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.RobotTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="StatusTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.StatusTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.GridPositionTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.GridTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.HeadingTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.PositionTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.RobotSimulatorTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.RobotTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.CommandFactoryTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.CommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.LeftCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.MoveCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.PlaceCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.ReportCommandTest" todir="${junit.output.dir}"/>
+            <test name="au.com.tla.robot.command.RightCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="GridPositionTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="au.com.tla.robot.GridPositionTest" todir="${junit.output.dir}"/>
+            <classpath refid="robot.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
