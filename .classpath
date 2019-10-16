@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="java/au/com/tla/robot/" kind="src" output="bin" path="test"/>
+	<classpathentry kind="src" path="src/main/java/au"/>
+	<classpathentry kind="src" output="bin" path="resources"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="con" path="C:/Users/Clinton/workspace/robot/bin"/>
+	<classpathentry kind="con" path="C:/Apps/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+	<classpathentry kind="con" path="C:/Apps/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Clinton/workspace/robot/src/test/lib/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
