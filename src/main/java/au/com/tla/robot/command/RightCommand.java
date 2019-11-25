@@ -4,7 +4,7 @@ import au.com.tla.robot.Heading;
 import au.com.tla.robot.Robot;
 
 /**
- * Command to rotate the Robot left 90 degrees.
+ * Command to rotate the Robot right 90 degrees.
  * 
  * @author Clinton
  * 

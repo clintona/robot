@@ -4,6 +4,12 @@ import java.io.PrintStream;
 
 import au.com.tla.robot.Robot;
 
+/**
+ * A Command to print the Robot's status to stdout.
+ * 
+ * @author Clinton
+ *
+ */
 public class ReportCommand extends Command {
 
     private PrintStream out;

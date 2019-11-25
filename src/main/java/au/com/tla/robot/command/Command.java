@@ -14,7 +14,7 @@ public abstract class Command {
 
     public Command(Robot robot) {
         if (robot == null) {
-            throw new NullPointerException("Robot instance cannot be null");
+            throw new NullPointerException("Robot does not exist");
         }
         this.robot = robot;
     }

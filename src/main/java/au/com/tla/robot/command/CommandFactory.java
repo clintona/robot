@@ -52,6 +52,9 @@ public class CommandFactory {
         case "REPORT":
             cmd = new ReportCommand(robot, new PrintStream(System.out));
             break;
+        case "HELP":
+            cmd = new HelpCommand(robot, new PrintStream(System.out));
+            break;
         }
         return cmd;
     }
